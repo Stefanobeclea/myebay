@@ -109,7 +109,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 			whereClauses.add(" u.username like :username ");
 			paramaterMap.put("username", "%" + example.getUsername() + "%");
 		}
-		if (example.getCreditoResiduo() != null) {
+		if (example.getCreditoResiduo() < 0) {
 			whereClauses.add("u.creditoResiduo >= :creditoResiduo ");
 			paramaterMap.put("creditoResiduo", example.getCreditoResiduo());
 		}

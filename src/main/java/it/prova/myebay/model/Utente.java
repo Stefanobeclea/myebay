@@ -36,7 +36,7 @@ public class Utente {
 	@Column(name = "cognome")
 	private String cognome;
 	@Column(name = "creditoResiduo")
-	private Long creditoResiduo;
+	private int creditoResiduo;
 	@Column(name = "dateCreated")
 	private Date dateCreated;
 	
@@ -100,7 +100,7 @@ public class Utente {
 
 
 
-	public Utente(String username, String password, String nome, String cognome, Long creditoResiduo, Date dateCreated,
+	public Utente(String username, String password, String nome, String cognome, int creditoResiduo, Date dateCreated,
 			Set<Annuncio> annunci, Set<Acquisto> acquisti, StatoUtente stato, Set<Ruolo> ruoli) {
 		super();
 		this.username = username;
@@ -115,7 +115,7 @@ public class Utente {
 		this.ruoli = ruoli;
 	}
 
-	public Utente(String username, String password, String nome, String cognome, Long creditoResiduo, Date dateCreated,
+	public Utente(String username, String password, String nome, String cognome, int creditoResiduo, Date dateCreated,
 			Set<Annuncio> annunci, StatoUtente stato, Set<Ruolo> ruoli) {
 		super();
 		this.username = username;
@@ -138,6 +138,20 @@ public class Utente {
 	}
 	
 	
+	
+	
+
+	public Utente(String username, String password, String nome, String cognome, int creditoResiduo, Date dateCreated) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.creditoResiduo = creditoResiduo;
+		this.dateCreated = dateCreated;
+	}
+
+
 
 	public Utente(Long id) {
 		super();
@@ -154,7 +168,7 @@ public class Utente {
 		this.dateCreated = dateCreated;
 	}
 	
-	public Long getCreditoResiduo() {
+	public int getCreditoResiduo() {
 		return creditoResiduo;
 	}
 
@@ -172,7 +186,7 @@ public class Utente {
 
 
 
-	public void setCreditoResiduo(Long creditoResiduo) {
+	public void setCreditoResiduo(int creditoResiduo) {
 		this.creditoResiduo = creditoResiduo;
 	}
 
