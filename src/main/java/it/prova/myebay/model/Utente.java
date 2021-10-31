@@ -76,6 +76,15 @@ public class Utente {
 		this.nome = nome;
 		this.cognome = cognome;
 	}
+	
+	public Utente(String username, String password, String nome, String cognome, int creditoResiduo) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.creditoResiduo = creditoResiduo;
+	}
 
 
 
@@ -127,6 +136,18 @@ public class Utente {
 		this.annunci = annunci;
 		this.stato = stato;
 		this.ruoli = ruoli;
+	}
+
+
+
+	public Utente(Long id, String username, String password, String nome, String cognome, int creditoResiduo) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.creditoResiduo = creditoResiduo;
 	}
 
 
