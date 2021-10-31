@@ -1,6 +1,6 @@
 package it.prova.myebay.web.serlvet.utente;
 
-import java.io.IOException; 
+import java.io.IOException;  
 import java.util.Date;
 
 import javax.servlet.ServletException;

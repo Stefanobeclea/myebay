@@ -130,4 +130,23 @@ public class AnnuncioServiceImpl implements AnnuncioService{
 	public void setAnnuncioDAO(AnnuncioDAO annuncioDAO) {
 		this.annuncioDAO = annuncioDAO;
 	}
+
+	@Override
+	public List<Annuncio> findByExample(Annuncio example) throws Exception {
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			annuncioDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return annuncioDAO.findByExample(example);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+	}
 }
