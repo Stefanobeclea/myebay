@@ -42,6 +42,13 @@ public class Categoria {
 		this.descrizione = descrizione;
 		this.articoli = articoli;
 	}
+	
+
+	public Categoria(String descrizione, String codice) {
+		super();
+		this.descrizione = descrizione;
+		this.codice = codice;
+	}
 
 	public Long getId() {
 		return id;
@@ -65,6 +72,14 @@ public class Categoria {
 
 	public void setArticoli(Set<Annuncio> articoli) {
 		this.articoli = articoli;
+	}
+
+	public String getCodice() {
+		return codice;
+	}
+
+	public void setCodice(String codice) {
+		this.codice = codice;
 	}
 
 	

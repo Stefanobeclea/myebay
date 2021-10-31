@@ -42,6 +42,11 @@ public class Acquisto {
 		this.utenteAcquirente = utenteAcquirente;
 	}
 
+	public Acquisto(String descrizione) {
+		super();
+		this.descrizione = descrizione;
+	}
+
 	public Acquisto(String descrizione, int prezzo, Date data) {
 		super();
 		this.descrizione = descrizione;

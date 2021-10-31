@@ -1,63 +1,85 @@
 package it.prova.myebay.utility;
 
-import java.text.ParseException;
+import java.text.ParseException; 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
-import it.prova.raccoltafilm.model.Film;
-import it.prova.raccoltafilm.model.Regista;
-import it.prova.raccoltafilm.model.Sesso;
-import it.prova.raccoltafilm.model.Utente;
+import it.prova.myebay.model.Acquisto;
+import it.prova.myebay.model.Annuncio;
+import it.prova.myebay.model.Categoria;
+import it.prova.myebay.model.Utente;
+
+
 
 public class UtilityForm {
 
-	public static Regista createRegistaFromParams(String nomeInputParam, String cognomeInputParam,
-			String nickNameInputParam, String dataDiNascitaStringParam, String sessoParam) {
+	public static Annuncio createAnnuncioFromParams(String testoAnnuncioInputParam, String prezzoInputParam,
+			 String dataStringParam, String utenteIdStringInserimentoParam) {
 
-		Regista result = new Regista(nomeInputParam, cognomeInputParam, nickNameInputParam);
-		result.setSesso(StringUtils.isBlank(sessoParam)?null:Sesso.valueOf(sessoParam));
-		result.setDataDiNascita(parseDateArrivoFromString(dataDiNascitaStringParam));
+		Annuncio result = new Annuncio(testoAnnuncioInputParam);
+		if (NumberUtils.isCreatable(prezzoInputParam)) {
+			result.setPrezzo(Integer.parseInt(prezzoInputParam));
+		}
+		result.setData(parseDateArrivoFromString(dataStringParam));
+		if (NumberUtils.isCreatable(utenteIdStringInserimentoParam)) {
+			result.setUtenteInserimento(new Utente(Long.parseLong(utenteIdStringInserimentoParam)));
+		}
 		return result;
 	}
 
-	public static boolean validateRegistaBean(Regista registaToBeValidated) {
+	public static boolean validateAnnuncioBean(Annuncio annuncioToBeValidated) {
 		// prima controlliamo che non siano vuoti i parametri
-		if (StringUtils.isBlank(registaToBeValidated.getNome())
-				|| StringUtils.isBlank(registaToBeValidated.getCognome())
-				|| StringUtils.isBlank(registaToBeValidated.getNickName()) 
-				|| registaToBeValidated.getSesso() == null
-				|| registaToBeValidated.getDataDiNascita() == null) {
+		if (StringUtils.isBlank(annuncioToBeValidated.getTestoAnnuncio())
+				|| annuncioToBeValidated.getPrezzo() < 0
+				|| annuncioToBeValidated.getUtenteInserimento() == null
+				|| annuncioToBeValidated.getUtenteInserimento().getId() == null 
+				|| annuncioToBeValidated.getUtenteInserimento().getId() < 1
+				|| annuncioToBeValidated.getData() == null) {
 			return false;
 		}
 		return true;
 	}
 	
-	public static Film createFilmFromParams(String titoloInputParam, String genereInputParam,
-			String minutiDurataInputParam, String dataPubblicazioneStringParam, String registaIdStringParam) {
+	public static Acquisto createAcquistoFromParams(String descrizioneInputParam, String prezzoInputParam,
+			 String dataStringParam, String utenteIdStringParam) {
 
-		Film result = new Film(titoloInputParam, genereInputParam);
-		if (NumberUtils.isCreatable(minutiDurataInputParam)) {
-			result.setMinutiDurata(Integer.parseInt(minutiDurataInputParam));
+		Acquisto result = new Acquisto(descrizioneInputParam);
+		if (NumberUtils.isCreatable(prezzoInputParam)) {
+			result.setPrezzo(Integer.parseInt(prezzoInputParam));
 		}
-		result.setDataPubblicazione(parseDateArrivoFromString(dataPubblicazioneStringParam));
-		if (NumberUtils.isCreatable(registaIdStringParam)) {
-			result.setRegista(new Regista(Long.parseLong(registaIdStringParam)));
+		result.setData(parseDateArrivoFromString(dataStringParam));
+		if (NumberUtils.isCreatable(utenteIdStringParam)) {
+			result.setUtenteAcquirente(new Utente(Long.parseLong(utenteIdStringParam)));
 		}
 		return result;
 	}
 
-	public static boolean validateFilmBean(Film filmToBeValidated) {
+	public static boolean validateAcquistoBean(Acquisto acquistoToBeValidated) {
 		// prima controlliamo che non siano vuoti i parametri
-		if (StringUtils.isBlank(filmToBeValidated.getTitolo())
-				|| StringUtils.isBlank(filmToBeValidated.getGenere())
-				|| filmToBeValidated.getMinutiDurata() == null 
-				|| filmToBeValidated.getMinutiDurata() < 1
-				|| filmToBeValidated.getRegista() == null
-				|| filmToBeValidated.getRegista().getId() == null 
-				|| filmToBeValidated.getRegista().getId() < 1) {
+		if (StringUtils.isBlank(acquistoToBeValidated.getDescrizione())
+				|| acquistoToBeValidated.getPrezzo() < 1
+				|| acquistoToBeValidated.getData() == null
+				|| acquistoToBeValidated.getUtenteAcquirente() == null
+				|| acquistoToBeValidated.getUtenteAcquirente().getId() == null 
+				|| acquistoToBeValidated.getUtenteAcquirente().getId() < 1) {
+			return false;
+		}
+		return true;
+	}
+	
+	public static Categoria createCategoriaFromParams(String descrizioneInputParam, String codiceInputParam) {
+
+		Categoria result = new Categoria(descrizioneInputParam, codiceInputParam);
+		return result;
+	}
+
+	public static boolean validateCategoriaBean(Categoria categoriaToBeValidated) {
+		// prima controlliamo che non siano vuoti i parametri
+		if (StringUtils.isBlank(categoriaToBeValidated.getDescrizione())
+				|| StringUtils.isBlank(categoriaToBeValidated.getCodice())) {
 			return false;
 		}
 		return true;
@@ -69,6 +91,7 @@ public class UtilityForm {
 				|| StringUtils.isBlank(utenteToBeValidated.getCognome())
 				|| StringUtils.isBlank(utenteToBeValidated.getUsername())
 				|| StringUtils.isBlank(utenteToBeValidated.getPassword())
+				|| utenteToBeValidated.getCreditoResiduo() < 0
 				|| utenteToBeValidated.getStato() == null
 				|| utenteToBeValidated.getDateCreated() == null)
 				{
@@ -77,12 +100,12 @@ public class UtilityForm {
 		return true;
 	}
 
-	public static Date parseDateArrivoFromString(String dataDiNascitaStringParam) {
-		if (StringUtils.isBlank(dataDiNascitaStringParam))
+	public static Date parseDateArrivoFromString(String dataStringParam) {
+		if (StringUtils.isBlank(dataStringParam))
 			return null;
 
 		try {
-			return new SimpleDateFormat("yyyy-MM-dd").parse(dataDiNascitaStringParam);
+			return new SimpleDateFormat("yyyy-MM-dd").parse(dataStringParam);
 		} catch (ParseException e) {
 			return null;
 		}

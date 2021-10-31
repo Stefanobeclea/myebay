@@ -136,6 +136,15 @@ public class Utente {
 		this.username = username;
 		this.password = password;
 	}
+	
+	
+
+	public Utente(Long id) {
+		super();
+		this.id = id;
+	}
+
+
 
 	public Utente(String username, String password, String nome, String cognome, Date dateCreated) {
 		this.username = username;

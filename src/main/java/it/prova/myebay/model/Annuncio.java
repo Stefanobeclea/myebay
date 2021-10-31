@@ -75,6 +75,11 @@ public class Annuncio {
 		this.categorie = categorie;
 	}
 
+	public Annuncio(String testoAnnuncio) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
+	}
+
 	public Long getId() {
 		return id;
 	}
