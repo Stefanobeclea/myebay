@@ -59,9 +59,13 @@
 					    <!-- end card body -->
 					    
 					    <div class='card-footer'>
-					        <a href="ExecuteListAnnuncioServlet" class='btn btn-outline-secondary' style='width:80px'>
-					            <i class='fa fa-chevron-left'></i> Back
-					        </a>
+					    	<form action="${pageContext.request.contextPath}/user/ExecuteDeleteAnnuncioServlet" method="post">
+					    		<input type="hidden" name="idAnnuncio" value="${show_annuncio_attr.id}">
+						    	<button type="submit" name="submit" id="submit" class="btn btn-danger">Conferma</button>
+						        <a href="${pageContext.request.contextPath}/user/ExecuteListAnnuncioServlet" class='btn btn-outline-secondary' style='width:80px'>
+						            <i class='fa fa-chevron-left'></i> Back
+						        </a>
+					        </form>
 					    </div>
 					<!-- end card -->
 					</div>	

@@ -6,9 +6,11 @@ import javax.persistence.EntityManager;
 
 import it.prova.myebay.dao.AnnuncioDAO;
 import it.prova.myebay.dao.CategoriaDAO;
+import it.prova.myebay.exceptions.ElementNotFoundException;
 import it.prova.myebay.model.Annuncio;
 import it.prova.myebay.model.Utente;
 import it.prova.myebay.web.listener.LocalEntityManagerFactoryListener;
+
 
 public class AnnuncioServiceImpl implements AnnuncioService{
 	private AnnuncioDAO annuncioDAO;
@@ -243,5 +245,29 @@ public class AnnuncioServiceImpl implements AnnuncioService{
 		} finally {
 			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
 		}
+	}
+
+	@Override
+	public void rimuovi(Long idAnnuncioToRemove) throws Exception {
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			entityManager.getTransaction().begin();
+
+			annuncioDAO.setEntityManager(entityManager);
+			Annuncio annuncioToRemove = annuncioDAO.findOne(idAnnuncioToRemove).orElse(null);
+			if (annuncioToRemove == null)
+				throw new ElementNotFoundException("Annuncio con id: " + idAnnuncioToRemove + " non trovato.");
+
+			annuncioDAO.delete(annuncioToRemove);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+		
 	}
 }

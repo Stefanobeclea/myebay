@@ -22,6 +22,8 @@ public interface AnnuncioService {
 
 	public void rimuovi(Annuncio annuncioInstance) throws Exception;
 	
+	public void rimuovi(Long idAnnuncioToRemove) throws Exception;
+	
 	public List<Annuncio> findByExample(Annuncio example) throws Exception;
 	
 	public List<Annuncio> findByExampleEager(Annuncio example) throws Exception;

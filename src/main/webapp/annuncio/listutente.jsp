@@ -62,7 +62,7 @@
 											<td>
 												<a class="btn  btn-sm btn-outline-secondary ml-2 mr-2" href="${pageContext.request.contextPath}/user/ExecuteVisualizzaAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Visualizza</a>
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/user/PrepareUpdateUtenteServlet?idAnnuncio=${annuncioItem.id }">Edit</a>
-												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath}/user/PrepareUpdateUtenteServlet?idAnnuncio=${annuncioItem.id }">Delete</a>
+												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath}/user/PrepareDeleteAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Delete</a>
 											</td>
 										</tr>
 									</c:forEach>
