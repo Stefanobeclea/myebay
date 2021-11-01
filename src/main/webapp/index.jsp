@@ -5,7 +5,7 @@
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="./header.jsp" />
 		<!-- Custom styles per le features di bootstrap 'Columns with icons' -->
-	   <link href="./assets/css/features.css" rel="stylesheet">
+	   <link href="${pageContext.request.contextPath}/assets/css/features.css" rel="stylesheet">
 	   
 	   <title>Raccolta Film</title>
 	 </head>
@@ -57,7 +57,7 @@
 				      <div class="container-fluid py-5">
 				        <h1 class="display-5 fw-bold">Benvenuto su Ebay</h1>
 				        <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. </p>
-				        <a class="btn btn-primary btn-lg" href="PrepareSearchAnnuncioServlet">Vai a Ricerca Annunci</a>
+				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/PrepareSearchAnnuncioServlet">Vai a Ricerca Annunci</a>
 				      </div>
 			    </div>
 			    
@@ -68,18 +68,18 @@
 			    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 			      <div class="feature col">
 			        <div class="feature-icon bg-primary bg-gradient">
-			          <svg class="bi" width="1em" height="1em"><use xlink:href="${pageContext.request.contextPath}/#collection"/></svg>
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
 			        </div>
 			        <h2>Gestione Annunci</h2>
 			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
 			        <a href="${pageContext.request.contextPath}/user/PrepareSearchAnnuncioUtenteServlet" class="icon-link">
 			          Vai alla funzionalità
-			          <svg class="bi" width="1em" height="1em"><use xlink:href="${pageContext.request.contextPath}/#chevron-right"/></svg>
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
 			      </div>
 			      <div class="feature col">
 			        <div class="feature-icon bg-primary bg-gradient">
-			          <svg class="bi" width="1em" height="1em"><use xlink:href="${pageContext.request.contextPath}/#people-circle"/></svg>
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
 			        </div>
 			        <h2>Visualizzazione Acquisti Effettuati</h2>
 			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
@@ -92,9 +92,9 @@
 			        <div class="feature-icon bg-primary bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
 			        </div>
-			        <h2>Ricerca Film</h2>
+			        <h2>Gestione Utenze</h2>
 			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a href="PrepareSearchFilmServlet" class="icon-link">
+			        <a href="${pageContext.request.contextPath}/admin/PrepareSearchUtenteServlet" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>

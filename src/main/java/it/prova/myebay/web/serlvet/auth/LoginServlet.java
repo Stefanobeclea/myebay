@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Utente utenteInstance = MyServiceFactory.getUtenteServiceInstance().accedi(loginInput, passwordInput);
 			if (utenteInstance == null) {
+				
 				request.setAttribute("errorMessage", "Utente non trovato.");
 				destinazione = "login.jsp";
 			} else {

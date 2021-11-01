@@ -23,17 +23,17 @@
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/home">Home</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareSearchAnnuncioServlet">Ricerca Annunci</a></li>
-              
               <c:if test="${userInfo.isAdmin()}">
               	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/PrepareSearchUtenteServlet">Ricerca Utenti</a></li>
               	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/PrepareInsertUtenteServlet">Inserisci Utenti</a></li>
               </c:if>
+              
             </ul> 
           </li>   
         </ul>
       </div>
       <div class="col-md-3 text-end">
-        <p class="navbar-text">Utente: ${userInfo.username }(${userInfo.nome } ${userInfo.cognome })
+        <p class="navbar-text">${userInfo.username } | Credito Residuo: ${userInfo.creditoResiduo} |
      <a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></p>
       </div>
     </div>

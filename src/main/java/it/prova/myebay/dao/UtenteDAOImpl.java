@@ -81,7 +81,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 	@Override
 	public Optional<Utente> login(String username, String password) {
 		TypedQuery<Utente> query = entityManager.createQuery(
-				"select u FROM Utente u join fetch u.ruoli r "
+				"select u FROM Utente u  "
 						+ "where u.username = :username and u.password=:password and u.stato=:statoUtente",
 				Utente.class);
 		query.setParameter("username", username);
