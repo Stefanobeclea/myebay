@@ -7,7 +7,7 @@
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 	   
-	   <title>Inserisci</title>
+	   <title>Ricerca</title>
 	 </head>
 	   <body class="d-flex flex-column h-100">
 	   
@@ -26,24 +26,24 @@
 			  
 			  <div class='card'>
 				    <div class='card-header'>
-				        <h5>Inserisci Elemento</h5> 
+				        <h5>Modifica Elemento</h5> 
 				    </div>
 				    <div class='card-body'>
 		
 							<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
 		
 		
-							<form method="post" action="${pageContext.request.contextPath}/user/ExecuteInsertAnnuncioServlet" class="row g-3" >
+							<form method="post" action="${pageContext.request.contextPath}/user/ExecuteUpdateAnnuncioServlet" class="row g-3" >
 							
-							
+								<input type="hidden" name="idAnnuncio" value="${update_annuncio_attr.id}">
 								<div class="col-md-6">
 									<label>Testo Annuncio<span class="text-danger">*</span></label>
-									<input type="text" name="testoAnnuncio" id="testoAnnuncio" class="form-control" placeholder="Inserire il testo dell'annuncio " value="${insert_annuncio_attr.testoAnnuncio}" >
+									<input type="text" name="testoAnnuncio" id="testoAnnuncio" class="form-control" placeholder="Inserire il testo dell'annuncio " value="${update_annuncio_attr.testoAnnuncio}" >
 								</div>
 								
 								<div class="col-md-6">
-									<label>Prezzo:<span class="text-danger">*</span></label>
-									<input type="text" name="prezzo" id="prezzo" class="form-control" placeholder="Inserire il prezzo" value="0" >
+									<label>Prezzo:<span class="text-danger">*</span></label>-
+									<input type="text" name="prezzo" id="prezzo" class="form-control" placeholder="Inserire il prezzo" value="${update_annuncio_attr.prezzo }" >
 								</div>
 								
 								<div class="col-md-6">
