@@ -21,7 +21,7 @@ public class ExecuteSearchsAnnuncioServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String testoAnnuncioParam = request.getParameter("testoAnnuncio");
 		String prezzoParam = request.getParameter("prezzo");
-		String dataInserimentoParam = request.getParameter("dataInserimento");
+		String dataInserimentoParam = request.getParameter("data");
 
 		Annuncio example = new Annuncio( testoAnnuncioParam, Integer.parseInt(prezzoParam), 
 				UtilityForm.parseDateArrivoFromString(dataInserimentoParam));

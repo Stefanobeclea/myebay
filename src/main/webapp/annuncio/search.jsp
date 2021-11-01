@@ -46,8 +46,8 @@
 								
 								<div class="col-md-3">
 									<label>Data Inserimento	</label>
-                        			<input class="form-control" id="dataInserimento" type="date" placeholder="dd/MM/yy"
-                            			title="formato : gg/mm/aaaa"  name="dataInserimento"  value="${parsedDate}" >
+                        			<input class="form-control" id="data" type="date" placeholder="dd/MM/yy"
+                            			title="formato : gg/mm/aaaa"  name="data"  value="${parsedDate}" >
 								</div>
 								
 								
