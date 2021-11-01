@@ -70,9 +70,9 @@
 			        <div class="feature-icon bg-primary bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="${pageContext.request.contextPath}/#collection"/></svg>
 			        </div>
-			        <h2>Ricerca Registi</h2>
+			        <h2>Gestione Annunci</h2>
 			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a href="PrepareSearchRegistaServlet" class="icon-link">
+			        <a href="${pageContext.request.contextPath}/user/PrepareSearchAnnuncioUtenteServlet" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="${pageContext.request.contextPath}/#chevron-right"/></svg>
 			        </a>

@@ -12,6 +12,7 @@ import javax.persistence.TypedQuery;
 import org.apache.commons.lang3.StringUtils;
 
 import it.prova.myebay.model.Annuncio;
+import it.prova.myebay.model.Utente;
 
 public class AnnuncioDAOImpl implements AnnuncioDAO{
 	private EntityManager entityManager;
@@ -61,7 +62,7 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 		Map<String, Object> paramaterMap = new HashMap<String, Object>();
 		List<String> whereClauses = new ArrayList<String>();
 
-		StringBuilder queryBuilder = new StringBuilder("select a from Annuncio a where a.id = a.id ");
+		StringBuilder queryBuilder = new StringBuilder("select a from Annuncio a join a.utenteInserimento u where a.id = a.id ");
 
 		if (StringUtils.isNotEmpty(example.getTestoAnnuncio())) {
 			whereClauses.add(" a.testoAnnuncio  like :testoAnnuncio ");
@@ -75,6 +76,10 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 			whereClauses.add("a.data >= :data ");
 			paramaterMap.put("data", example.getData());
 		}
+		if (example.getUtenteInserimento().getId() != null) {
+			whereClauses.add("u.id = :idUtente ");
+			paramaterMap.put("idUtente", example.getUtenteInserimento().getId());
+		}
 
 		queryBuilder.append(!whereClauses.isEmpty() ? " and " : "");
 		queryBuilder.append(StringUtils.join(whereClauses, " and "));
@@ -85,5 +90,11 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 		}
 
 		return typedQuery.getResultList();
+	}
+
+	@Override
+	public List<Annuncio> findByUtente(Utente example) throws Exception {
+		TypedQuery<Annuncio> query = entityManager.createQuery("select a from Annuncio a join a.utenteInserimento u where u.id = ?1",Annuncio.class);
+		return query.setParameter(1, example.getId()).getResultList();
 	}
 }
