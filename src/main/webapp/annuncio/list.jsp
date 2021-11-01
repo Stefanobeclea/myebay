@@ -59,7 +59,7 @@
 											<td>${annuncioItem.prezzo }</td>
 											<td><fmt:formatDate type = "date" value = "${annuncioItem.data }" /></td>
 											<td>
-												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateUtenteServlet?idUtente=${annuncioItem.id }">Acquista</a>
+												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareAcquistaServlet?idAnnuncio=${annuncioItem.id }">Acquista</a>
 											</td>
 										</tr>
 									</c:forEach>

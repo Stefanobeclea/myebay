@@ -1,9 +1,11 @@
 package it.prova.myebay.service;
 
-import java.util.List; 
+import java.util.List;
 
+import it.prova.myebay.dao.AcquistoDAO;
 import it.prova.myebay.dao.AnnuncioDAO;
 import it.prova.myebay.dao.CategoriaDAO;
+import it.prova.myebay.dao.UtenteDAO;
 import it.prova.myebay.model.Annuncio;
 import it.prova.myebay.model.Utente;
 
@@ -30,7 +32,11 @@ public interface AnnuncioService {
 	
 	public List<Annuncio> findByUtente(Utente example) throws Exception;
 	
+	public void acquista (String id, Utente utenteInstance) throws Exception;
+	
 	// per injection
 	public void setAnnuncioDAO(AnnuncioDAO annuncioDAO);
 	public void setCategoriaDAO(CategoriaDAO categoriaDAO);
+	public void setAcquistoDAO(AcquistoDAO acquistoDAO);
+	public void setUtenteDAO(UtenteDAO utenteDAO);
 }

@@ -1,12 +1,17 @@
 package it.prova.myebay.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import it.prova.myebay.dao.AcquistoDAO;
 import it.prova.myebay.dao.AnnuncioDAO;
 import it.prova.myebay.dao.CategoriaDAO;
+import it.prova.myebay.dao.UtenteDAO;
 import it.prova.myebay.exceptions.ElementNotFoundException;
+import it.prova.myebay.exceptions.InsufficientFundsException;
+import it.prova.myebay.model.Acquisto;
 import it.prova.myebay.model.Annuncio;
 import it.prova.myebay.model.Utente;
 import it.prova.myebay.web.listener.LocalEntityManagerFactoryListener;
@@ -15,6 +20,8 @@ import it.prova.myebay.web.listener.LocalEntityManagerFactoryListener;
 public class AnnuncioServiceImpl implements AnnuncioService{
 	private AnnuncioDAO annuncioDAO;
 	private CategoriaDAO categoriaDAO;
+	private AcquistoDAO acquistoDAO;
+	private UtenteDAO utenteDAO;
 
 	@Override
 	public List<Annuncio> listAll() throws Exception {
@@ -137,8 +144,18 @@ public class AnnuncioServiceImpl implements AnnuncioService{
 	}
 	
 	@Override
+	public void setAcquistoDAO(AcquistoDAO acquistoDAO) {
+		this.acquistoDAO = acquistoDAO;
+	}
+	
+	@Override
 	public void setCategoriaDAO(CategoriaDAO categoriaDAO) {
 		this.categoriaDAO = categoriaDAO;
+	}
+	
+	@Override
+	public void setUtenteDAO(UtenteDAO utenteDAO) {
+		this.utenteDAO = utenteDAO;
 	}
 
 	@Override
@@ -260,6 +277,47 @@ public class AnnuncioServiceImpl implements AnnuncioService{
 				throw new ElementNotFoundException("Annuncio con id: " + idAnnuncioToRemove + " non trovato.");
 
 			annuncioDAO.delete(annuncioToRemove);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+		
+	}
+
+	@Override
+	public void acquista(String id, Utente utenteInstance) throws Exception {
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			entityManager.getTransaction().begin();
+			annuncioDAO.setEntityManager(entityManager);
+			acquistoDAO.setEntityManager(entityManager);
+			utenteDAO.setEntityManager(entityManager);
+			
+			Annuncio annuncioDaAcquistare = annuncioDAO.findOne(Long.parseLong(id)).orElse(null);
+			
+			if (annuncioDaAcquistare == null)
+				throw new ElementNotFoundException("Annuncio con id: " + id + " non trovato.");
+			
+			if(utenteInstance.getCreditoResiduo() < annuncioDaAcquistare.getPrezzo())
+				throw new InsufficientFundsException("Credito Residuo Insufficiente per Acquisto");
+			
+			int sottrazioneCredito = utenteInstance.getCreditoResiduo() - annuncioDaAcquistare.getPrezzo();
+
+			utenteInstance.setCreditoResiduo(sottrazioneCredito);
+			
+			utenteDAO.update(utenteInstance);
+			
+			annuncioDaAcquistare.setAperto(false);
+			
+			Acquisto acquistoDaCreare = new Acquisto(annuncioDaAcquistare.getTestoAnnuncio(), annuncioDaAcquistare.getPrezzo(), new Date(), utenteInstance);
+			
+			acquistoDAO.insert(acquistoDaCreare);
+			
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			entityManager.getTransaction().rollback();

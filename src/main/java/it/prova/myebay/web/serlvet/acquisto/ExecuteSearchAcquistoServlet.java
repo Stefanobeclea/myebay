@@ -23,7 +23,6 @@ public class ExecuteSearchAcquistoServlet extends HttpServlet {
 		String prezzoParam = request.getParameter("prezzo");
 		String dataInserimentoParam = request.getParameter("data");		
 		
-		
 		try {
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
 			Utente utenteInSessione = (Utente)httpRequest.getSession().getAttribute("userInfo");
