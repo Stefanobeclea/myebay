@@ -49,7 +49,6 @@
 			                         	<th>Testo Annuncio</th>
 				                        <th>Prezzo</th>
 				                        <th>Data Inserimento</th>
-				                        <th>Utente Username</th>
 				                        <th>Azioni</th>
 				                    </tr>
 				                </thead>
@@ -58,12 +57,11 @@
 										<tr>
 											<td>${annuncioItem.testoAnnuncio }</td>
 											<td>${annuncioItem.prezzo }</td>
-											<td>${annuncioItem.utente.username }</td>
 											<td><fmt:formatDate type = "date" value = "${annuncioItem.data }" /></td>
 											<td>
-												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateUtenteServlet?idUtente=${annuncioItem.id }">Visualizza</a>
+												<a class="btn  btn-sm btn-outline-secondary ml-2 mr-2" href="PrepareUpdateUtenteServlet?idUtente=${annuncioItem.id }">Visualizza</a>
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateUtenteServlet?idUtente=${annuncioItem.id }">Edit</a>
-												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateUtenteServlet?idUtente=${annuncioItem.id }">Delete</a>
+												<a class="btn btn-outline-danger btn-sm" href="PrepareUpdateUtenteServlet?idUtente=${annuncioItem.id }">Delete</a>
 											</td>
 										</tr>
 									</c:forEach>

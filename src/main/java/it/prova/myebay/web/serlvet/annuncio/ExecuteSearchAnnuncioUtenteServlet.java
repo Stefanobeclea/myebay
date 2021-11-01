@@ -32,7 +32,7 @@ public class ExecuteSearchAnnuncioUtenteServlet extends HttpServlet {
 			
 			
 			request.setAttribute("annuncio_list_attribute",
-					MyServiceFactory.getAnnuncioServiceInstance().findByExample(example));
+					MyServiceFactory.getAnnuncioServiceInstance().findByExampleEager(example));
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
