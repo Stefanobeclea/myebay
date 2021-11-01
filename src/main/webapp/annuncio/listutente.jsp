@@ -41,7 +41,8 @@
 				        <h5>Lista dei risultati</h5> 
 				    </div>
 				    <div class='card-body'>
-				    
+				    	
+				    	<a class="btn btn-primary " href="${pageContext.request.contextPath}/user/PrepareInsertAnnuncioServlet">Add New</a>
 				        <div class='table-responsive'>
 				            <table class='table table-striped ' >
 				                <thead>
@@ -59,9 +60,9 @@
 											<td>${annuncioItem.prezzo }</td>
 											<td><fmt:formatDate type = "date" value = "${annuncioItem.data }" /></td>
 											<td>
-												<a class="btn  btn-sm btn-outline-secondary ml-2 mr-2" href="PrepareUpdateUtenteServlet?idUtente=${annuncioItem.id }">Visualizza</a>
-												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateUtenteServlet?idUtente=${annuncioItem.id }">Edit</a>
-												<a class="btn btn-outline-danger btn-sm" href="PrepareUpdateUtenteServlet?idUtente=${annuncioItem.id }">Delete</a>
+												<a class="btn  btn-sm btn-outline-secondary ml-2 mr-2" href="${pageContext.request.contextPath}/user/ExecuteVisualizzaAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Visualizza</a>
+												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/user/PrepareUpdateUtenteServlet?idAnnuncio=${annuncioItem.id }">Edit</a>
+												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath}/user/PrepareUpdateUtenteServlet?idAnnuncio=${annuncioItem.id }">Delete</a>
 											</td>
 										</tr>
 									</c:forEach>

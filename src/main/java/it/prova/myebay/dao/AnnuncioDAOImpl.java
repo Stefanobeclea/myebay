@@ -129,4 +129,10 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 
 		return typedQuery.getResultList();
 	}
+
+	@Override
+	public Optional<Annuncio> findOneEager(Long id) throws Exception {
+		return entityManager.createQuery("from Annuncio a left join fetch a.categorie c where a.id=:idAnnuncio", Annuncio.class)
+				.setParameter("idAnnuncio", id).getResultList().stream().findFirst();
+	}
 }

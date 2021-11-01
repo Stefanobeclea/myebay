@@ -49,7 +49,6 @@
 			                         	<th>Testo Annuncio</th>
 				                        <th>Prezzo</th>
 				                        <th>Data Inserimento</th>
-				                        <th>Utente Username</th>
 				                        <th>Azioni</th>
 				                    </tr>
 				                </thead>
@@ -58,7 +57,6 @@
 										<tr>
 											<td>${annuncioItem.testoAnnuncio }</td>
 											<td>${annuncioItem.prezzo }</td>
-											<td>${annuncioItem.utente.username }</td>
 											<td><fmt:formatDate type = "date" value = "${annuncioItem.data }" /></td>
 											<td>
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateUtenteServlet?idUtente=${annuncioItem.id }">Acquista</a>
