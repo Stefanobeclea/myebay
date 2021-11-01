@@ -169,7 +169,7 @@ public class AnnuncioServiceImpl implements AnnuncioService{
 			annuncioDAO.setEntityManager(entityManager);
 
 			// eseguo quello che realmente devo fare
-			return annuncioDAO.findByExample(example);
+			return annuncioDAO.findByExampleEager(example);
 
 		} catch (Exception e) {
 			e.printStackTrace();

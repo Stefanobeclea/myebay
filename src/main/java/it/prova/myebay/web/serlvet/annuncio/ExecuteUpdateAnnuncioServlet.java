@@ -39,7 +39,13 @@ public class ExecuteUpdateAnnuncioServlet extends HttpServlet {
 				request.setAttribute("errorMessage", "Attenzione sono presenti errori di validazione");
 				request.getRequestDispatcher("/annuncio/update.jsp").forward(request, response);
 				return;
-			}		
+			}
+			Annuncio annuncioInstance = MyServiceFactory.getAnnuncioServiceInstance().caricaSingoloElemento(Long.parseLong(idParam));
+			if (!annuncioInstance.isAperto()) {
+				request.setAttribute("errorMessage", "Attenzione l'annuncio è chiuso");
+				request.getRequestDispatcher("/home").forward(request, response);
+				return;
+			}
 			
 			example.setData(new Date());
 			example.setAperto(true);
