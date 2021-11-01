@@ -16,11 +16,12 @@ import it.prova.myebay.model.Utente;
 
 
 
-@WebFilter(filterName = "CheckAuthFilter", urlPatterns = { "" })
+@WebFilter(filterName = "CheckAuthFilter", urlPatterns = { "/*" })
 public class CheckAuthFilter implements Filter {
 
 	private static final String HOME_PATH = "";
-	private static final String[] EXCLUDED_URLS = {"/login.jsp","/LoginServlet","/LogoutServlet","/assets/"};
+	private static final String[] EXCLUDED_URLS = {"/login.jsp","/LoginServlet","/LogoutServlet","/assets/","/index.jsp","/PrepareSearchAnnuncioServlet",
+			"/annuncio/list.jsp","/ExecuteSearchsAnnuncioServlet", "/annuncio/search.jsp", "/PrepareAcquistaServlet", "/annuncio/acquista.jsp"};
 	private static final String[] PROTECTED_URLS = {"/admin/"};
 	private static final String[] PROTECTED_URLS_USER = {"/user/"};
 

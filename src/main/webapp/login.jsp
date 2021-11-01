@@ -49,6 +49,12 @@
    					 Registrati
   					</button>  
 		  </form>
+		  <br>
+		  <form action="${pageContext.request.contextPath}/index.jsp" method="post">
+  				<button class="w-100 btn btn-lg btn-primary" type="submit">
+   					 Entra come ospite
+  					</button>  
+		  </form>
 		  
 		  <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
 		</main>

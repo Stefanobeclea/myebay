@@ -66,6 +66,7 @@
 					    <div class='card-footer'>
 					    	<form action="${pageContext.request.contextPath}/user/ExecuteAcquistaAnnuncioServlet" method="post">
 					    		<input type="hidden" name="idAnnuncio" value="${show_annuncio_attr.id}">
+					    		<input type="hidden" name="from" value="${pageContext.request.requestURI}">
 						    	<button type="submit" name="submit" id="submit" class="btn btn-primary">Acquista</button>
 						        <a href="list.jsp" class='btn btn-outline-secondary' style='width:80px'>
 						            <i class='fa fa-chevron-left'></i> Back
