@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="it" class="h-100" >
 	 <head>
@@ -48,11 +49,16 @@
 									<label>Data Inserimento	</label>
                         			<input class="form-control" id="data" type="date" placeholder="dd/MM/yy"
                             			title="formato : gg/mm/aaaa"  name="data"  value="${parsedDate}" >
+								</div>							
+								
+								<div class="form-check">
+								<c:forEach items="${categorie}" var="categorieItem">
+										<input class="form-check-input" type="checkbox" name="categorie" value="${categorieItem.id}">${categorieItem.descrizione}<br>
+									</c:forEach>
 								</div>
 								
-								
 							<div class="col-12">
-								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
+								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-dark">Conferma</button>
 								<input class="btn btn-outline-warning" type="reset" value="Ripulisci">
 							</div>
 		

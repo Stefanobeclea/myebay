@@ -51,6 +51,7 @@
 								<dt class="col-sm-3 text-right">Categorie:</dt>
 								<c:forEach items="${show_annuncio_attr.categorie}" var="categoriaItem">
 									 <dd class="col-sm-9">${categoriaItem.descrizione}</dd>
+									 <dt class="col-sm-3 text-right"></dt>
 								</c:forEach>
 							</dl>
 							

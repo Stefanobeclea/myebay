@@ -55,7 +55,7 @@
 								
 						
 							<div class='card-footer'>
-							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
+							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-dark">Conferma</button>
 					        <a href="${pageContext.request.contextPath}/user/ExecuteListAnnuncioServlet" class='btn btn-outline-secondary' style='width:80px'>
 					            <i class='fa fa-chevron-left'></i> Back
 					        </a>

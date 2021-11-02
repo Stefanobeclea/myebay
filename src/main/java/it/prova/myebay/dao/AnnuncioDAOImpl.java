@@ -1,6 +1,6 @@
 package it.prova.myebay.dao;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -103,19 +103,23 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 		Map<String, Object> paramaterMap = new HashMap<String, Object>();
 		List<String> whereClauses = new ArrayList<String>();
 
-		StringBuilder queryBuilder = new StringBuilder("select a from Annuncio a where a.id = a.id ");
+		StringBuilder queryBuilder = new StringBuilder("select distinct a from Annuncio a join fetch a.utenteInserimento u join a.categorie c  where a.id = a.id ");
 
 		if (StringUtils.isNotEmpty(example.getTestoAnnuncio())) {
 			whereClauses.add(" a.testoAnnuncio  like :testoAnnuncio ");
 			paramaterMap.put("testoAnnuncio", "%" + example.getTestoAnnuncio() + "%");
 		}
-		if (example.getPrezzo() < 0) {
+		if (example.getPrezzo() > 0) {
 			whereClauses.add("a.prezzo >= :prezzo ");
 			paramaterMap.put("prezzo", example.getPrezzo());
 		}
 		if (example.getData() != null) {
 			whereClauses.add("a.data >= :data ");
 			paramaterMap.put("data", example.getData());
+		}
+		if(example.getCategorie() != null && !example.getCategorie().isEmpty()) {
+			whereClauses.add("c in :listaCategorie ");
+			paramaterMap.put("listaCategorie", example.getCategorie());
 		}
 		
 		whereClauses.add("a.aperto = true ");

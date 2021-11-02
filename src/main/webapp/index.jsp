@@ -58,7 +58,7 @@
 				      <div class="container-fluid py-5">
 				        <h1 class="display-5 fw-bold">Benvenuto su Ebay</h1>
 				        <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. </p>
-				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/PrepareSearchAnnuncioServlet">Vai a Ricerca Annunci</a>
+				        <a class="btn btn-dark btn-lg" href="${pageContext.request.contextPath}/PrepareSearchAnnuncioServlet">Vai a Ricerca Annunci</a>
 				      </div>
 			    </div>
 			    
@@ -69,10 +69,10 @@
 			  <div class="container px-4 py-5" id="featured-3">
 			    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 			      <div class="feature col">
-			        <div class="feature-icon bg-primary bg-gradient">
+			        <div class="feature-icon btn-dark bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
 			        </div>
-			        <h2>Gestione Annunci</h2>
+			       <a href="${pageContext.request.contextPath}/user/PrepareSearchAnnuncioUtenteServlet" style="text-decoration: none; color: #242424;" target="_self" title="Cerca i tuoi annunci"><h2>Gestione Annunci</h2></a> 
 			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
 			        <a href="${pageContext.request.contextPath}/user/PrepareSearchAnnuncioUtenteServlet" class="icon-link">
 			          Vai alla funzionalità
@@ -80,10 +80,10 @@
 			        </a>
 			      </div>
 			      <div class="feature col">
-			        <div class="feature-icon bg-primary bg-gradient">
+			        <div class="feature-icon btn-dark bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
 			        </div>
-			        <h2>Visualizzazione Acquisti Effettuati</h2>
+			        <h2>Acquisti Effettuati</h2>
 			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
 			        <a href="${pageContext.request.contextPath}/user/PrepareSearchAcquistoServlet" class="icon-link">
 			          Vai alla funzionalità
@@ -92,7 +92,7 @@
 			      </div>
 			      <c:if test="${userInfo.isAdmin()}">
 			      <div class="feature col">
-			        <div class="feature-icon bg-primary bg-gradient">
+			        <div class="feature-icon btn-dark bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
 			        </div>
 			        <h2>Gestione Utenze</h2>

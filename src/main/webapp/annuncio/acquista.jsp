@@ -56,6 +56,7 @@
 								<dt class="col-sm-3 text-right">Categorie:</dt>
 								<c:forEach items="${show_annuncio_attr.categorie}" var="categoriaItem">
 									 <dd class="col-sm-9">${categoriaItem.descrizione}</dd>
+									 <dt class="col-sm-3 text-right"></dt>
 								</c:forEach>
 							</dl>
 							
@@ -66,8 +67,8 @@
 					    	<c:if test="${userInfo.isUser()}">
 								<form action="${pageContext.request.contextPath}/user/ExecuteAcquistaAnnuncioServlet" method="post">
 					    			<input type="hidden" name="idAnnuncio" value="${show_annuncio_attr.id}">
-						    		<button type="submit" name="submit" id="submit" class="btn btn-primary">Acquista</button>
-						       		 <a href="list.jsp" class='btn btn-outline-secondary' style='width:80px'>
+						    		<button type="submit" name="submit" id="submit" class="btn btn-dark">Acquista</button>
+						       		 <a href="${pageContext.request.contextPath}/index.jsp" class='btn btn-outline-secondary' style='width:80px'>
 						      	 	 <i class='fa fa-chevron-left'></i> Back
 						       		 </a>
 					        	</form>
@@ -77,8 +78,8 @@
 					    	<c:if test="${!userInfo.isUser()}">
 								<form action="${pageContext.request.contextPath}/PrepareLoginServlet" method="post">
 					    			<input type="hidden" name="idAnnuncio" value="${show_annuncio_attr.id}">
-						    		<button type="submit" name="submit" id="submit" class="btn btn-primary">Acquista</button>
-						       		 <a href="list.jsp" class='btn btn-outline-secondary' style='width:80px'>
+						    		<button type="submit" name="submit" id="submit" class="btn btn-dark">Acquista</button>
+						       		 <a href="${pageContext.request.contextPath}/index.jsp" class='btn btn-outline-secondary' style='width:80px'>
 						      	 	 <i class='fa fa-chevron-left'></i> Back
 						       		 </a>
 					        	</form>

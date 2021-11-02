@@ -54,14 +54,16 @@
 				                </thead>
 				                <tbody>
 				                	<c:forEach items="${annuncio_list_attribute }" var="annuncioItem">
-										<tr>
-											<td>${annuncioItem.testoAnnuncio }</td>
-											<td>${annuncioItem.prezzo }</td>
-											<td><fmt:formatDate type = "date" value = "${annuncioItem.data }" /></td>
-											<td>
+										<c:if test="${annuncioItem.utenteInserimento.id != userInfo.id}">
+											<tr>
+												<td>${annuncioItem.testoAnnuncio }</td>
+												<td>${annuncioItem.prezzo }</td>
+												<td><fmt:formatDate type = "date" value = "${annuncioItem.data }" /></td>
+												<td>
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareAcquistaServlet?idAnnuncio=${annuncioItem.id }">Acquista</a>
 											</td>
 										</tr>
+										</c:if>
 									</c:forEach>
 				                </tbody>
 				            </table>

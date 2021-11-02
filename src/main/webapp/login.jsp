@@ -42,19 +42,19 @@
 		      </label>
 		    </div>
 		    <input type="hidden" name="idAnnuncio" value="${idAnnuncio}">
-		    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+		    <button class="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
 		  </form>
 		  <br>
 		  
-		  <form action="PrepareSignUpServlet" method="post">
-  				<button class="w-100 btn btn-lg btn-primary" type="submit">
+		  <form action="${pageContext.request.contextPath}/PrepareSignUpServlet" method="post">
+  				<button class="w-100 btn btn-lg btn-dark" type="submit">
    					 Registrati
   					</button>  
 		  </form>
 		  <br>
 		  
 		  <form action="${pageContext.request.contextPath}/index.jsp" method="post">
-  				<button class="w-100 btn btn-lg btn-primary" type="submit">
+  				<button class="w-100 btn btn-lg btn-dark" type="submit">
    					 Entra come ospite
   					</button>  
 		  </form>
