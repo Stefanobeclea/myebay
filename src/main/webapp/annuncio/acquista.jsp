@@ -62,17 +62,29 @@
 					    	
 					    </div>
 					    <!-- end card body -->
-					    
 					    <div class='card-footer'>
-					    	<form action="${pageContext.request.contextPath}/user/ExecuteAcquistaAnnuncioServlet" method="post">
-					    		<input type="hidden" name="idAnnuncio" value="${show_annuncio_attr.id}">
-					    		<input type="hidden" name="from" value="${pageContext.request.requestURI}">
-						    	<button type="submit" name="submit" id="submit" class="btn btn-primary">Acquista</button>
-						        <a href="list.jsp" class='btn btn-outline-secondary' style='width:80px'>
-						            <i class='fa fa-chevron-left'></i> Back
-						        </a>
-					        </form>
+					    	<c:if test="${userInfo.isUser()}">
+								<form action="${pageContext.request.contextPath}/user/ExecuteAcquistaAnnuncioServlet" method="post">
+					    			<input type="hidden" name="idAnnuncio" value="${show_annuncio_attr.id}">
+						    		<button type="submit" name="submit" id="submit" class="btn btn-primary">Acquista</button>
+						       		 <a href="list.jsp" class='btn btn-outline-secondary' style='width:80px'>
+						      	 	 <i class='fa fa-chevron-left'></i> Back
+						       		 </a>
+					        	</form>
+							</c:if>
+							
+							
+					    	<c:if test="${!userInfo.isUser()}">
+								<form action="${pageContext.request.contextPath}/PrepareLoginServlet" method="post">
+					    			<input type="hidden" name="idAnnuncio" value="${show_annuncio_attr.id}">
+						    		<button type="submit" name="submit" id="submit" class="btn btn-primary">Acquista</button>
+						       		 <a href="list.jsp" class='btn btn-outline-secondary' style='width:80px'>
+						      	 	 <i class='fa fa-chevron-left'></i> Back
+						       		 </a>
+					        	</form>
+							</c:if>
 					    </div>
+					   
 					<!-- end card -->
 					</div>	
 			  

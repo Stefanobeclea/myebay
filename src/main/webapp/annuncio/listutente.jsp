@@ -61,8 +61,10 @@
 											<td><fmt:formatDate type = "date" value = "${annuncioItem.data }" /></td>
 											<td>
 												<a class="btn  btn-sm btn-outline-secondary ml-2 mr-2" href="${pageContext.request.contextPath}/user/ExecuteVisualizzaAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Visualizza</a>
+												<c:if test="${annuncioItem.aperto}">
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/user/PrepareUpdateAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Edit</a>
 												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath}/user/PrepareDeleteAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Delete</a>
+												</c:if>
 											</td>
 										</tr>
 									</c:forEach>

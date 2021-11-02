@@ -2,6 +2,7 @@ package it.prova.myebay.web.serlvet.utente;
 
 import java.io.IOException; 
 import java.util.Date;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.prova.myebay.model.Ruolo;
 import it.prova.myebay.model.StatoUtente;
 import it.prova.myebay.model.Utente;
 import it.prova.myebay.service.MyServiceFactory;
@@ -45,6 +47,8 @@ public class ExecuteUpdateUtenteServlet extends HttpServlet {
 			
 			example.setDateCreated(new Date());
 			example.setStato(StatoUtente.valueOf(statoParam));
+			Set<Ruolo> ruoliUtente =  MyServiceFactory.getUtenteServiceInstance().caricaSingoloElemento(Long.parseLong(idParam)).getRuoli();
+			example.setRuoli(ruoliUtente);
 			
 			if(!UtilityForm.validateUtenteBean(example)) {
 				request.setAttribute("update_utente_attr", example);

@@ -54,12 +54,17 @@
 								</c:forEach>
 							</dl>
 							
+							<dl class="row">
+							  <dt class="col-sm-3 text-right">Disponibile:</dt>
+							  <dd class="col-sm-9">${show_annuncio_attr.aperto}</dd>
+					    	</dl>
+							
 					    	
 					    </div>
 					    <!-- end card body -->
 					    
 					    <div class='card-footer'>
-					        <a href="ExecuteListAnnuncioServlet" class='btn btn-outline-secondary' style='width:80px'>
+					        <a href="${pageContext.request.contextPath}/user/ExecuteListAnnuncioServlet" class='btn btn-outline-secondary' style='width:80px'>
 					            <i class='fa fa-chevron-left'></i> Back
 					        </a>
 					    </div>

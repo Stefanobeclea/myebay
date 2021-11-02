@@ -76,7 +76,6 @@
 								<div class="col-md-6">
 									<label for="statoUt">Stato Utente</label>
 									<select class="form-control" id="statoUt" name="stato">
-										<option value="" selected> -- Selezionare una voce -- </option>
 										<option value="ATTIVO"  >ATTIVO</option>
 										<option value="CREATO"  >CREATO</option>
 										<option value="DISABILITATO"  >DISABILITATO</option>

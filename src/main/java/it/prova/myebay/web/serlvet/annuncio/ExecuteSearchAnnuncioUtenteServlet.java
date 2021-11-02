@@ -41,5 +41,11 @@ public class ExecuteSearchAnnuncioUtenteServlet extends HttpServlet {
 		}
 		request.getRequestDispatcher("/annuncio/listutente.jsp").forward(request, response);
 	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+	
 
 }

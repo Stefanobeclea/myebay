@@ -34,7 +34,12 @@
       </div>
       <div class="col-md-3 text-end">
         <p class="navbar-text">${userInfo.username } | Credito Residuo: ${userInfo.creditoResiduo} |
-     <a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></p>
+     	<c:if test="${userInfo.isUser()}">
+     		<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></p>
+     	</c:if>
+     	<c:if test="${!userInfo.isUser()}">
+     		<a href="${pageContext.request.contextPath}/login.jsp">Login</a></p>
+     	</c:if>
       </div>
     </div>
   </nav>

@@ -53,7 +53,7 @@
 					    <!-- end card body -->
 					    
 					    <div class='card-footer'>
-					        <a href="${pageContext.request.contextPath}/home" class='btn btn-outline-secondary' style='width:80px'>
+					        <a href="${pageContext.request.contextPath}/user/ExecuteListAcquistoServlet" class='btn btn-outline-secondary' style='width:80px'>
 					            <i class='fa fa-chevron-left'></i> Back
 					        </a>
 					    </div>

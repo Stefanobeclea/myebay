@@ -1,6 +1,6 @@
-package it.prova.myebay.web.serlvet.annuncio;
+package it.prova.myebay.web.serlvet.acquisto;
 
-import java.io.IOException ; 
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,16 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
-import it.prova.myebay.model.Annuncio;
+import it.prova.myebay.model.Acquisto;
 import it.prova.myebay.model.Utente;
 import it.prova.myebay.service.MyServiceFactory;
 
-
-@WebServlet("/user/ExecuteListAnnuncioServlet")
-public class ExecuteListAnnuncioServlet extends HttpServlet {
+/**
+ * Servlet implementation class ExecuteListAcquistoServlet
+ */
+@WebServlet("/user/ExecuteListAcquistoServlet")
+public class ExecuteListAcquistoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
+   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			// se nell'url della request è presente SUCCESS significa che devo mandare un
@@ -33,9 +35,9 @@ public class ExecuteListAnnuncioServlet extends HttpServlet {
 
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
 			Utente utenteInSessione = (Utente)httpRequest.getSession().getAttribute("userInfo");
-			Annuncio example = new Annuncio(utenteInSessione);
-			request.setAttribute("annuncio_list_attribute",
-					MyServiceFactory.getAnnuncioServiceInstance().findByExampleEager(example));
+			Acquisto example = new Acquisto(utenteInSessione);
+			request.setAttribute("acquisto_list_attribute",
+					MyServiceFactory.getAcquistoServiceInstance().findByExampleEager(example));
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
@@ -44,7 +46,7 @@ public class ExecuteListAnnuncioServlet extends HttpServlet {
 		}
 
 		// andiamo ai risultati
-		request.getRequestDispatcher("/annuncio/listutente.jsp").forward(request, response);
+		request.getRequestDispatcher("/acquisto/list.jsp").forward(request, response);
 	}
 
 	

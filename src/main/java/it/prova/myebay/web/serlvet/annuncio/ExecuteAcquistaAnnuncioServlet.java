@@ -1,6 +1,6 @@
 package it.prova.myebay.web.serlvet.annuncio;
 
-import java.io.IOException; 
+import java.io.IOException;  
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +11,6 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import it.prova.myebay.exceptions.ElementNotFoundException;
 import it.prova.myebay.exceptions.InsufficientFundsException;
-import it.prova.myebay.model.Acquisto;
 import it.prova.myebay.model.Utente;
 import it.prova.myebay.service.MyServiceFactory;
 
@@ -33,15 +32,8 @@ public class ExecuteAcquistaAnnuncioServlet extends HttpServlet {
 			try {
 				HttpServletRequest httpRequest = (HttpServletRequest) request;
 				
-				MyServiceFactory.getAnnuncioServiceInstance().acquista(idParam, (Utente)httpRequest.getSession().getAttribute("userInfo"));
+				MyServiceFactory.getAnnuncioServiceInstance().acquista(idParam, (Utente)httpRequest.getSession().getAttribute("userInfo"));				
 				
-				Utente utenteInSessione = (Utente)httpRequest.getSession().getAttribute("userInfo");
-				Acquisto example = new Acquisto(utenteInSessione);
-				
-				
-				request.setAttribute("successMessage", "Acquisto effettuato");
-				request.setAttribute("acquisto_list_attribute",
-						MyServiceFactory.getAcquistoServiceInstance().findByExampleEager(example));
 			} catch (ElementNotFoundException e) {
 				request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
 				request.getRequestDispatcher("/home").forward(request, response);
@@ -58,6 +50,6 @@ public class ExecuteAcquistaAnnuncioServlet extends HttpServlet {
 				return;
 			}
 
-			request.getRequestDispatcher("/acquisto/list.jsp").forward(request, response);
+			response.sendRedirect("ExecuteListAcquistoServlet?operationResult=SUCCESS");
 		}
 	}
